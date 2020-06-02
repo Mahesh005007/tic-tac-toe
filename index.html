@@ -1,0 +1,433 @@
+<html>
+  <head>
+    <meta name ="viewport" content="width-device-width , initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/3a3d3d55fa.js" crossorigin="anonymous"></script>
+    <title>TIC-TAC-TOE</title>
+    <style>
+      /*header */
+       @font-face{
+        font-family:ff;
+        src:url(gsbrush.ttf)
+      }
+      body{
+        margin:0;
+        padding: 5%;
+        background: black;
+      }
+      #main{
+        padding: 0;
+        margin:0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: ff;
+        color: white;
+        width: 100%;
+      }
+      #main > h1{
+        padding: 0;
+        margin-top: 100px;
+        color: #111;
+        font-size: 6em;
+      }
+      #main > h1 span{
+        display: table-cell;
+        padding: 0;
+        margin: 0;
+        animation: a 2s linear;
+        animation-fill-mode: both;
+      }
+      
+      #main > h1 > span:nth-child(1){animation-delay:.18s}
+      #main > h1 > span:nth-child(2){animation-delay:.36s}
+      #main > h1 > span:nth-child(3){animation-delay:.54s;}
+      #main > h1 > span:nth-child(4){animation-delay:.72s;}
+      #main > h1 > span:nth-child(5){animation-delay:.9s;}
+      #main > h1 > span:nth-child(6){animation-delay:1.08s;}
+      #main > h1 > span:nth-child(7){animation-delay:1.26s;}
+      #main > h1 > span:nth-child(8){animation-delay:1.44s;}
+      #main > h1 > span:nth-child(9){animation-delay:1.62s;}
+      #main > h1 > span:nth-child(10){animation-delay:1.8s;}
+      #main > h1 > span:nth-child(11){animation-delay:1.98s;}
+      
+      #main > h1 > span:hover{
+        text-shadow:5px 5px 10px white;
+      }
+      
+      @keyframes a{
+        from{color:black;}
+        to{color:white;}
+      }
+      
+      /*form */
+      
+      
+      @font-face{
+        font-family:sfont;
+        src : url(sfont.ttf);
+      }
+      #cont{
+        position:;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top:50px;
+      }
+      #c{
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        height:100%;
+        transform-style: preserve-3d;
+        transform-origin: center left;
+        transition: transform .5s;
+      }
+      .f{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        background: none;
+        color:white;
+        text-align: center;
+      }
+      .b{
+        position: absolute;
+        margin:0;
+        width: 100%;
+        height:100%;
+        backface-visibility: hidden;
+        background: none;
+        color:white;
+        transform: rotateY(180deg);
+        text-align: center;
+      }
+      #c > .f > h1 ,#c > .b > h1{
+        font-size: 6em;
+        font-family: Monospace;
+        font-weight: ;
+        letter-spacing: 4px;
+      }
+      .flip{
+        transform: translateX(100%) rotateY(180deg);
+      }
+      input{
+        background: none;
+        border:none;
+        height: 40px;
+        border-radius:40px ;
+        font-size: 1em;
+        border-bottom:1px solid grey;
+        color:white;
+        width:50%;
+        padding-top:5px;
+        padding-left:20px;
+        cursor:text;
+      }
+      input :hover{
+        cursor: text;
+      }
+      input:focus{
+        border-bottom: 1.5px solid white;
+        outline:none;
+      }
+      .f > i,.b > i{
+        font-size: 1em;
+      }
+      #signup,#back{
+        margin-top:10%;
+        width:25%;
+        height:30px;
+        margin-left:22%;
+        float:left;
+        text-align: center;
+        color: black;
+        font-size:1em;
+        background: white;
+        border-radius:40px;
+        box-shadow: 2px 5px  grey;
+        outline: none;
+        transition: .2s ease;
+      }
+      #login,#nsignup{
+        margin-top:10%;
+        height:30px;
+        width:25%;
+        float:left;
+        margin-left:4%;
+        text-align: center;
+        color: black;
+        font-size:1em;
+        background: white;
+        box-shadow: 2px 5px  grey;
+        border-radius:40px;
+        outline: none;
+      }
+      #login:hover ,#signup:hover ,#back:hover ,#nsignup:hover{
+        color:white;
+        background: black;
+        transition: .2s ease;
+      }
+      #pp{    /* player name page*/
+        position:relative;
+        text-align: center;
+        color:white;
+      }
+      #pb{     
+        margin-top:80px;
+        width:45%
+        height:50px;
+        color:black;
+        background: white;
+        font-size:1.5em;
+        border-radius: 40px;
+        outline: none;
+        transition: .1s ease;
+      }
+      .pinput{
+        margin-top:70px;
+        font-family: sfont;
+        width:70%;
+        height:70px;
+        text-align: center;
+        font-size: 3em;
+        border:5px dashed #d9d9d9;
+        color:white;
+        border-radius: 30px;
+      }
+      #pb:hover{
+        background-color: black;
+        color:white;
+      }
+      #gt{
+        display: flex;
+        justify-content: center;
+        margin-top: 40%;
+        font-size: 55px;
+        color:white;
+        text-align: center;
+        background:black;
+        animation: wc 1s infinite;
+        animation-fill-mode: both;
+      }
+      @keyframes wc{
+        from{text-shadow:-25px -25px 0px red,-20px -20px 0px #ffffff,-15px -15px 0px red,-10px -10px 0px #ffffff,-5px -5px 0px red;}
+        25%{text-shadow:25px -25px 0px red,20px -20px 0px #ffffff,15px -15px 0px red,10px -10px 0px #ffffff,5px -5px 0px red;}
+        50%{text-shadow:25px 25px 0px red,20px 20px 0px #ffffff,15px 15px 0px red,10px 10px 0px #ffffff,5px 5px 0px red;}
+        75%{text-shadow:-25px 25px 0px red,-20px 20px 0px #ffffff,-15px 15px 0px red,-10px 10px 0px #ffffff,-5px 5px 0px red;}
+        to{text-shadow:-25px -25px 0px red,-20px -20px 0px #ffffff,-15px -15px 0px red,-10px -10px 0px #ffffff,-5px -5px 0px red;}
+      }
+      
+      /*for responsive pages*/
+      
+      @media screen and (max-width:800px){
+        #cont{
+          margin-top:30px;
+        }
+        #main > h1{
+          margin-top: 35px;
+          font-size: 3.5em;
+        }
+        #c > .f > h1 ,#c > .b > h1{
+          font-size: 3em;
+          letter-spacing: 2px;
+          font-weight: bold;
+          font-family: Monospace;
+        }
+        input{
+          width:80%;
+          height: 20px;
+          font-size: 0.8em;
+        }
+        #signup,#back{
+          margin-top: 20%;
+          margin-left: 10%;
+          height:24px;
+          width: 40%;
+          font-size: 0.8em;
+          box-shadow: 2px 2.5px grey;
+        }
+        #login,#nsignup{
+          margin-top: 20%;
+          height:24px;
+          width: 40%;
+          box-shadow: 2px 2.5px grey;
+          font-size: 0.8em;
+        }
+        #email{
+          margin-top:15%;
+        }
+        #nemail{
+          margin-top:10%;
+        }
+        .pinput{
+          width:100%;
+          height:60px;
+          font-size: 1.5em;
+          border:3px dotted #d9d9d9;
+          border-radius: 20px;
+        }
+        #pb{
+          width: 55%;
+          height: 30px;
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--header -->
+       <div id = "main">
+      <h1>
+        <span>T</span><span>I</span><span>C</span>
+        <span>-</span>
+        <span>T</span><span>A</span><span>C</span>
+        <span>-</span>
+        <span>T</span><span>O</span><span>E</span>
+      </h1>
+    </div>
+    <!--form -->
+    <div id="cont">
+      <div id="c">
+        <div class="f">
+          <h1>LOGIN</h1>
+          <i class="far fa-envelope"></i>
+          <input type="email" id="email" placeholder="Enter your Email-id" ><br/><br/><br/><br/>
+          <i class="fas fa-unlock-alt"></i>
+          <input type="password" id="pass" placeholder="Enter your password"><br/>
+          <button id="signup" type="submit" onclick="togs()"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;&nbsp;Signup</button>
+          <button id="login" type="submit" onclick="log()"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;Login</button>
+        </div>
+        <div class="b">
+          <h1>SIGNUP</h1>
+          <i class="far fa-envelope"></i>
+          <input type="email" id="nemail" placeholder="Enter your email address"><br/><br/><br/>
+          <i class="fas fa-key"></i>
+          <input type="password" id="npass" placeholder="Enter a password"><br/><br/><br/>
+          <i class="fas fa-key"></i>
+          <input type="password" id="nrpass" placeholder="Re-enter password"><br/>
+          <button id="back" type="submit" onclick="togs()"><i class="fas fa-backward"></i>&nbsp;&nbsp;&nbsp;Back</button>
+          <button id="nsignup" type="submit" onclick="reg()"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;Signup</button>
+        </div>
+      </div>
+    </div>
+    <script>
+    /////////////////functionalcode
+      var array = [];
+      var ne ;
+      var flag = false;
+      var np;
+      var email = document.getElementById("email");
+      var pass = document.getElementById("pass");
+      var nemail = document.getElementById("nemail");
+      var npass = document.getElementById("npass");
+      var nrpass = document.getElementById("nrpass");
+      function togs(){
+        document.getElementById("c").classList.toggle("flip");
+      }
+      function obj(id,password){
+        this.id = id;
+        this.password = password;
+      }
+      function reg(){
+        if(nemail.value == ""){
+          alert("Enter your E-mail");
+        }
+        if((nemail.value != "") && ((npass.value && nrpass.value) == "")){
+          alert("Enter password");
+        }
+        if((nemail.value != "") && ((npass.value && nrpass.value) != "") && (npass.value != nrpass.value)){
+          alert("password doesn't match");
+        }
+        if(((nemail.value && npass.value && nrpass.value) != "") && (npass.value == nrpass.value)){
+          ne = nemail.value;
+          nrp = nrpass.value;
+          array.push(new obj(ne,nrp));
+          alert("sucessfully registered \n Login now");
+          nemail.value='';
+          npass.value='';
+          nrpass.value='';
+          togs();
+        }
+      }
+      function log(){
+        if(email.value == ""){
+          alert("Enter your E-mail");
+        }
+         if((email.value != "") && (pass.value == "")){
+          alert("Enter password");
+        }
+        if((array == "") && (email.value != "") && (pass.value != "")){
+          togs();
+          alert("No users registered \n Please Register!!");
+        }
+        if((email.value != "") && (pass.value != "") && (array != "")){ //to check the Email-id is registered
+          for(let i in array){
+            if(array[i].id == email.value){
+              flag = true;
+            }
+          }
+          if(flag == false){
+            alert("Email-id is  not registered!!\n Please signup");
+          }
+        }
+        if((email.value != "") && (pass.value != "") && (array != "")){
+          for(let i in array){
+            if(array[i].id == email.value){
+              if(array[i].password == pass.value){
+                pform();
+              }
+              else{
+                alert("Incorrect password");
+                break;
+              }
+            }
+          }
+        }
+        email.value = '';
+        pass.value = '';
+        flag = false;
+      }
+      function pform(){
+        document.getElementById("c").innerHTML = "";
+        var pname = document.createElement("div");
+        pname.setAttribute("id","pp");
+        document.getElementById("c").appendChild(pname);
+        pname.appendChild(document.createElement("br"));
+        var p1 = document.createElement("input");
+        p1.setAttribute("class","pinput");
+        p1.setAttribute("type","text");
+        p1.setAttribute("placeholder","Player 1");
+        pname.appendChild(p1);
+        pname.appendChild(document.createElement("br"));
+        var pb = document.createElement("button");
+        pb.setAttribute("type","submit");
+        pb.setAttribute("id","pb");
+        var playi = document.createElement("i");
+        playi.setAttribute("class","fas fa-play-circle");
+        pb.innerHTML="<b>Let's Play</b>&nbsp;&nbsp;&nbsp;";
+        pb.appendChild(playi);
+        pname.appendChild(pb);
+        pname.appendChild(document.createElement("br"));
+        var p2 = document.createElement("input");
+        p2.setAttribute("class","pinput");
+        p2.setAttribute("type","text");
+        p2.setAttribute("placeholder","player 2");
+        pname.appendChild(p2);
+        pname.appendChild(document.createElement("br"));
+        pb.setAttribute("onclick","game()");
+      }
+      function game(){
+        document.getElementById("main").style.display="none";
+        document.getElementById("c").style.display="none";
+        var gt = document.createElement("div");
+        gt.setAttribute("id","gt");
+        gt.innerHTML="VJ game develop panna solli tharala 😅";
+        document.body.appendChild(gt);
+      }
+    </script>
+  </body>
+</html>
